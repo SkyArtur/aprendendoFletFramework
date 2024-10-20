@@ -25,3 +25,4 @@ from flet_core import (
 from ._window import app_window
 from ._page import app_page
 from ._heading import top_heading
+from ._snack_bar import snack_bar
