@@ -16,7 +16,7 @@ def decorator_validators(function: Callable) -> Callable:
         try:
             _input = function(page, *args, **kwargs)
         except Exception as e:
-            snack_bar(page, f'{e}', function)
+            snack_bar(page, f'{e}.', function)
         else:
             return _input
     return _wrapper
