@@ -1,4 +1,4 @@
-from flet_core import Page, alignment
+from components import Page, alignment
 
 
 def basic_window(page: Page, height: int, width: int) -> None:
