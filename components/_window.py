@@ -1,7 +1,7 @@
-from components import Page, alignment
+from components import *
 
 
-def basic_window(page: Page, height: int, width: int) -> None:
+def app_window(page: Page, height: int, width: int) -> None:
     page.window.height = height
     page.window.width = width
     page.window.resizable = False
