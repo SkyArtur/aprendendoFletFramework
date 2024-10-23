@@ -18,7 +18,7 @@ def validate_biometric(page: Page, _field: TextField, _biometric: Literal['weigh
         float: The validated value of the biometric data (weight or height) if it is within the valid range.
 
     Raises:
-        ValueError: If the provided value for weight is not between 0 and 300 kg, or for height if not between 0 and 3 meters.
+        ValueError: If the provided value for weight is not between 0 and 350 kg, or for height if not between 0 and 3 meters.
                    Also raised if the biometric type is invalid or unsupported.
 
     Examples:
