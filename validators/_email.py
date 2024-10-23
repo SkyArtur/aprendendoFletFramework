@@ -22,7 +22,7 @@ def validate_email(page: Page, _email: TextField) -> str | None:
     """
     try:
         email = re.search(r'^[a-z0-9_.+-]+@([a-z0-9-]+\.)+[a-z]{2,}$', _email.value).string
-        if dbDev.fetch('SELECT id FROM users WHERE email = ?;', (email,)):
+        if dbDev.fetch('SELECT id FROM users WHERE email = %s;', (email,)):
             raise ValueError('Email already registered!')
     except (TypeError, ValueError, AttributeError) as error:
         if isinstance(error, AttributeError):
