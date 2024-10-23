@@ -5,7 +5,7 @@ from validators import *
 from functions import clear_fields, save_profile
 
 
-def view_new_profile(page: ft.Page, view_login: Callable = None) -> None:
+def view_new_profile(page: ft.Page, view_login: Callable) -> None:
 
     def save(event):
         if not validator_fields(page, *_fields): return
