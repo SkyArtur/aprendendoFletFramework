@@ -1,0 +1,1 @@
+from ._view_new_profile import view_new_profile

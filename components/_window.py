@@ -1,7 +1,7 @@
 from components import *
 
 
-def app_window(page: Page, height: int, width: int) -> None:
+def app_window(page: Page, width: int, height: int) -> None:
     page.window.height = height
     page.window.width = width
     page.window.resizable = False
