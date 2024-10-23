@@ -304,6 +304,6 @@ def validate_biometric(page: Page, _field: TextField, _biometric: Literal['weigh
     return value
 ```
 
-O conjunto de funções apresentadas faz parte de um sistema de validação de dados voltado para uma interface de usuário 
+O conjunto de funções apresentadas fazem parte de um sistema de validação de dados voltado para uma interface de usuário 
 que irá lidar com formulários. Cada função de validação garante que os dados inseridos pelo usuário estejam no formato 
 correto antes de serem processados, o que ajuda a evitar erros no banco de dados e melhora a experiência do usuário final.
