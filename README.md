@@ -277,6 +277,33 @@ def validate_date(page: Page, _date: TextField, _format: Literal['UK', 'US', 'IS
         else:
             raise error
 ```
+
+### validate_biometric(page: Page, _field: TextField, _biometric: Literal['weight', 'height']) -> float
+A função validate_biometric é usada para validar campos de formulário que correspondem a dados biométricos, 
+como peso (weight) ou altura (height). Dependendo do tipo de dado biométrico especificado, a função verifica se o valor 
+está dentro de um intervalo aceitável. Se o valor não estiver dentro desse intervalo, ela lança um erro.
+
+```python
+from typing import Literal
+from components import Page, TextField
+from ._decorator import decorator_validators
+
+
+@decorator_validators
+def validate_biometric(page: Page, _field: TextField, _biometric: Literal['weight', 'height']) -> float:
+    value = float(_field.value.replace(',', '.'))
+    match _biometric:
+        case 'weight':
+            if value < 0 or value > 300:
+                raise ValueError(f'Value {value} must be between 0 and 300')
+        case 'height':
+            if value < 0 or value > 3:
+                raise ValueError(f'Value {value} must be between 0 and 3')
+        case _:
+            raise ValueError(f'Invalid value for {_field}')
+    return value
+```
+
 O conjunto de funções apresentadas faz parte de um sistema de validação de dados voltado para uma interface de usuário 
 que irá lidar com formulários. Cada função de validação garante que os dados inseridos pelo usuário estejam no formato 
 correto antes de serem processados, o que ajuda a evitar erros no banco de dados e melhora a experiência do usuário final.
