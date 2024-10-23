@@ -11,6 +11,7 @@ create table if not exists profiles (
     id_user int not null,
     name varchar(250) not null,
     birth date not null,
+    gender char(1) check ( gender = 'M' or gender = 'F' ),
     weight decimal(5, 2),
     height decimal(3, 2),
     foreign key (id_user)
@@ -57,16 +58,34 @@ create procedure create_profile(
     _username varchar(25),
     _email varchar(250),
     _password varchar(90),
+    _gender char(1),
     _weight decimal(5, 2),
     _height decimal(3,2)
 ) begin
     insert into users (username, email, password)
         values (_username, _email, _password);
-    insert into profiles (id_user, name, birth, weight, height)
-        values (last_insert_id(), _name, _birth, _weight, _height);
+    insert into profiles (id_user, name, birth, gender, weight, height)
+        values (last_insert_id(), _name, _birth, _gender, _weight, _height);
 end;
 $$ delimiter ;
 
+drop procedure create_profile;
+
+describe profiles;
+
+alter table profiles add column gender char(1) check ( profiles.gender = 'F' or profiles.gender = 'M' ) after birth;
+
+alter table weighing modify created datetime default (current_timestamp);
+
+select * from profiles;
+
+select * from weighing;
+
+update profiles set gender = 'F' where id = 2;
+
+delete from weighing where id_profile = 2;
+
+SELECT u.id, name, birth, weight, height, username, email, password
+    FROM users u JOIN profiles p ON u.id = p.id_user;
 
 
-select name, birth, weight, height, username, email, password from profiles p join users u on p.id_user = u.id;
