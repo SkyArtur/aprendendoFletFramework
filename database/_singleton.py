@@ -66,7 +66,7 @@ class Connector:
             self.__cursor = self.__connection.cursor()
             self.__cursor.execute(query, data) if data else self.__cursor.execute(query)
         except (psycopg2.Error, mysql.connector.Error, sqlite3.Error, Exception) as error:
-            return error
+            raise Exception(error)
         else:
             if fetch:
                 self.__response = self.__cursor.fetchall()
@@ -78,7 +78,7 @@ class Connector:
                 self.__cursor.close()
                 self.__connection.close()
             except (psycopg2.Error, mysql.connector.Error, sqlite3.Error, Exception) as error:
-                return error
+                raise Exception(error)
 
     def create(self, query: str):
         """
