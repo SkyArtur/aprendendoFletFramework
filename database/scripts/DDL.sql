@@ -52,11 +52,11 @@ $$ delimiter ;
 
 delimiter $$
 create procedure create_profile(
+    _name varchar(250),
+    _birth date,
     _username varchar(25),
     _email varchar(250),
     _password varchar(90),
-    _name varchar(250),
-    _birth date,
     _weight decimal(5, 2),
     _height decimal(3,2)
 ) begin
@@ -67,3 +67,6 @@ create procedure create_profile(
 end;
 $$ delimiter ;
 
+
+
+select name, birth, weight, height, username, email, password from profiles p join users u on p.id_user = u.id;
