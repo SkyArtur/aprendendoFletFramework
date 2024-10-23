@@ -1,4 +1,4 @@
-from ._fields import validator_fields
+from ._fields import validate_fields
 from ._name import validate_name
 from ._username import validate_username
 from ._email import validate_email

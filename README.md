@@ -152,7 +152,7 @@ def decorator_validators(function: Callable) -> Callable:
     return _wrapper
 ```
 
-### validator_fields(page: Page, *args: TextField) -> bool | None
+### validate_fields(page: Page, *args: TextField) -> bool | None
 Essa função verifica se todos os campos fornecidos (TextField) têm valores válidos (não nulos ou vazios). 
 Se algum campo estiver vazio, ela lança uma exceção.
 
@@ -162,7 +162,7 @@ from ._decorator import decorator_validators
 
 
 @decorator_validators
-def validator_fields(page: Page, *args: TextField) -> bool | None:
+def validate_fields(page: Page, *args: TextField) -> bool | None:
     for text_field in args:
         if text_field.value is None or text_field.value == '':
             raise ValueError(f'Field "{text_field.label}" cannot be null')

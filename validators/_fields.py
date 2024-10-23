@@ -3,7 +3,7 @@ from ._decorator import decorator_validators
 
 
 @decorator_validators
-def validator_fields(page: Page, *args: TextField) -> bool | None:
+def validate_fields(page: Page, *args: TextField) -> bool | None:
     """
     Validates that each TextField is not empty or null.
 
