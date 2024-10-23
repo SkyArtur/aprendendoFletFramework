@@ -37,11 +37,11 @@ def validate_biometric(page: Page, _field: TextField, _biometric: Literal['weigh
     value = float(_field.value.replace(',', '.'))
     match _biometric:
         case 'weight':
-            if value < 0 or value > 300:
-                raise ValueError(f'Value {value} must be between 0 and 300')
+            if value < 0 or value > 350:
+                raise ValueError(f'Value {value} must be between 0 and 350')
         case 'height':
             if value < 0 or value > 3:
                 raise ValueError(f'Value {value} must be between 0 and 3')
         case _:
             raise ValueError(f'Invalid value for {_field}')
-    return value
+    return round(value, 2)
